@@ -1,0 +1,7 @@
+USE CRMCloudSchema ;
+CREATE TABLE IF NOT EXISTS CustomerPayKind (
+    CustPayKindID INT AUTO_INCREMENT NOT NULL PRIMARY KEY ,
+    PayKindName VARCHAR(80) NOT NULL ,
+    PayKindMark VARCHAR(80) NULL ,
+    CreateDateTime DateTime
+NOT NULL DEFAULT NOW() ) ;

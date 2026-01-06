@@ -1,0 +1,27 @@
+DELIMITER $$$
+CREATE PROCEDURE ShowAddingCariablesResult()
+BEGIN
+  /* 使用 DECLARE Statament 宣告變數  */
+  DECLARE THIS_IS_VALUES_VAR INT ;
+  DECLARE THIS_IS_A_STRING_VAR VARCHAR(120) ;
+  DECLARE _LEADING_UNDER_LINE_VAR DateTime ;
+  DECLARE 這是中文變數_1 INT ;
+  /* 使用 SET Statament 宣告變數  */
+  SET @這是中文變數_2 = True ;
+  SET @THIS_IS_A_INT_VAR = 999 ;
+  SET @_THIS_IS_A_STRING_VARIABLE = 'MySQL 5.7/6 Version' ;
+  SET @dateCariable_001 = CURRENT_DATE() ;
+  
+  SET THIS_IS_VALUES_VAR = 10000 * RAND() ;
+  SET THIS_IS_A_STRING_VAR = CONCAT(@_THIS_IS_A_STRING_VARIABLE, 
+       '-', FORMAT(@THIS_IS_A_INT_VAR, 0) , 
+	   '-' , DATE_FORMAT(@dateCariable_001,'%Y/%m/%d %H:%i/%s') ) ;
+  SET _LEADING_UNDER_LINE_VAR = NOW() ;
+  SET 這是中文變數_1 = THIS_IS_VALUES_VAR + @THIS_IS_A_INT_VAR ;
+  SELECT THIS_IS_VALUES_VAR , THIS_IS_A_STRING_VAR , 
+         _LEADING_UNDER_LINE_VAR , 這是中文變數_1 ;
+  SELECT @這是中文變數_2 , @THIS_IS_A_INT_VAR , 
+          @_THIS_IS_A_STRING_VARIABLE , @dateCariable_001 , 
+          THIS_IS_A_STRING_VAR ;
+END $$$
+DELIMITER ;

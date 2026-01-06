@@ -1,0 +1,12 @@
+SELECT 
+    CustomerMain.CustVAPriority
+        AS 客戶信用等級 ,
+    (SELECT SUM(CustomSaleMainRec.SaleTotPrice)
+        FROM CustomSaleMainRec 
+        INNER JOIN CustomerMain CM ON CM.CustomID = 
+            CustomSaleMainRec.CustomID WHERE 
+              CM.CustVAPriority = 
+                 CustomerMain.CustVAPriority) 
+        AS 客戶人數
+   FROM CustomerMain
+   GROUP BY CustomerMain.CustVAPriority ;
